@@ -63,13 +63,13 @@ ingest_task = BashOperator(
 
 transform_task = BashOperator(
     task_id='run_transform',
-    bash_command='python3 ../transformations/transformation.py'
+    bash_command='python3 ../transformations/transformation.py',
     dag=dag,
 )
 
 load_task = BashOperator(
     task_id='run_load',
-    bash_command='python3 ../load_to_postgres.py'
+    bash_command='python3 ../load_to_postgres.py',
     dag=dag,
 )
 
