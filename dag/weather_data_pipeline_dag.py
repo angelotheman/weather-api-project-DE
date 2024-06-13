@@ -6,7 +6,7 @@ from os import getenv
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
-from airflow.operators.pyton_operator import PythonOperator
+from airflow.operators.python_operator import PythonOperator
 from airflow.utils.email import send_email
 import requests
 import json
@@ -19,8 +19,7 @@ default_args = {
     'owner': 'angelotheman',
     'depends_on_past': False,
     'start_date': datetime(2024, 6, 14),
-    'email': ['ktwum721@gmail.com'],
-    'email_on_failure': True,
+    'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
@@ -59,26 +58,26 @@ dag = DAG(
 ingest_task = BashOperator(
     task_id='run_ingest',
     bash_command='python3 ../ingest.py',
-    dag=dag
+    dag=dag,
 )
 
 transform_task = BashOperator(
     task_id='run_transform',
     bash_command='python3 ../transformations/transformation.py'
-    dag=dag
+    dag=dag,
 )
 
 load_task = BashOperator(
     task_id='run_load',
     bash_command='python3 ../load_to_postgres.py'
-    dag=dag
+    dag=dag,
 )
 
 # Python Operator for sending SMS
 send_sms_alert_task = PythonOperator(
     task_id='send_sms_alert',
     python_callable=send_sms_alert,
-    dag=dag
+    dag=dag,
 )
 
 
