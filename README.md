@@ -5,7 +5,7 @@ This is
 Event planning organizations face challenges when planning outdoor events due to unpredictable weather conditions. By leveraging weather data, these organizations can make informed decisions, optimize event schedules, and ensure better customer experiences. This project aims to create an ETL (Extract, Transform, Load) pipeline to collect, process, and visualize weather data to assist event planners in making data-driven decisions
 
 ## Systems Architecture
-![Weather Dashboard](assets/dashboard.png)
+
 
 ## Objectives
 1. Collect weather data from an external API.
@@ -95,6 +95,13 @@ airflow webserver -p 8080
 
 ## Weather Data Visualization
 This visualization shows the processed weather data, providing insights into weather patterns that can help event planners make informed decisions.
+
+![Weather Dashboard](assets/dashboard.png)
+
+## Future Work
+* Deploy the pipeline on a cloud platform for better scalability and availability.
+* Integrate real-time data processing capabilities.
+* Enhance visualizations using advanced BI tools like Power BI or Tableau.
 
 ## Conclusion
 This project demonstrates how to build an automated ETL pipeline using modern data engineering tools and technologies. The pipeline efficiently collects, processes, and visualizes weather data to aid event planning organizations in making informed decisions.
